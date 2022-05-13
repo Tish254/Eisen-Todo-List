@@ -16,9 +16,9 @@ function App() {
   
   return (
     <Router>
-      <div className="container mx-auto my-5 px-2 py-2 flex gap-10 w-4/5 bg-gray-300 rounded h-[90vh]
+      <div className="container mx-auto my-5 px-2 py-2 flex gap-10 w-[80%] bg-gray-300 rounded h-[90vh]
         ">
-        <div className="flex flex-col items-center w-2/5 bg-white px-8 pt-8 pb-12 rounded">
+        <div className="flex flex-col items-center w-[30%] bg-white pt-8 pb-12 rounded overflow-y-auto overflow-x-hidden">
           <NavButton path="/"  img={<i className="fa-solid fa-house text-violet-600 text-base font-bold"></i>} btnName={"My Day"} taskCount={10}/>
           <NavButton path="/alltasks"  img={<i className="fa-solid fa-list-check text-violet-600 text-base font-bold"></i>} btnName={"Tasks"} taskCount={10}/>
           <NavButton path="/completed"  img={<i className="fa-regular fa-circle-check text-violet-600 text-base font-bold"></i>} btnName={"Completed"} taskCount={10}/>
@@ -30,6 +30,8 @@ function App() {
           <NavButton path="/about"   img={<i className="fa-solid fa-circle-info text-violet-600 text-base font-bold"></i>} btnName={"About"} taskCount={10}/>
       
         </div>
+
+        
 
         <Routes>
             
@@ -55,6 +57,8 @@ function App() {
             <Route path="/about" element={<About/>}/>
 
         </Routes>
+
+        
         
       </div>
     </Router>

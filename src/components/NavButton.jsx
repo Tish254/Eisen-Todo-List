@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom"
 
 const NavButtons = ({path, img, btnName, taskCount, }) => {
 
-  const activeClassName = "w-4/5 border-l-4 rounded bg-gray-200 hover:bg-gray-300 hover:border-l-4 border-l-violet-600 hover:border-l-violet-600 hover:rounded-l cursor-pointer"
-  const inactiveClassName = "w-4/5 border-l-4 rounded hover:bg-gray-200 hover:border-l-4 border-l-white hover:border-l-violet-600 hover:rounded-l cursor-pointer"
+  const activeClassName = "mb-1 w-4/5 border-l-4 rounded bg-gray-200 hover:bg-gray-300 hover:border-l-4 border-l-violet-600 hover:border-l-violet-600 hover:rounded-l cursor-pointer"
+  const inactiveClassName = "mb-1 w-4/5 border-l-4 rounded hover:bg-gray-200 hover:border-l-4 border-l-white hover:border-l-violet-600 hover:rounded-l cursor-pointer"
   
   return (
     <NavLink to={path} className={({isActive}) => (isActive ? activeClassName: inactiveClassName )}>
