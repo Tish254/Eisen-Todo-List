@@ -1,6 +1,8 @@
+import FormatDate from "./FormatDate";
+
 const Task = ({taskLabel, task, date}) => {
   return (
-    <div className="flex justify-center flex-col bg-white rounded py-3 px-3 w-full">
+    <li className="flex justify-center flex-col bg-white rounded py-3 px-5 w-full">
         
         <div className="flex items-center w-full justify-between">
           <div className="flex items-center gap-3">
@@ -18,17 +20,17 @@ const Task = ({taskLabel, task, date}) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-start px-9 gap-3 text-sm text-gray-500">
+        <div className="flex items-center justify-start px-9 gap-3 text-[.7rem] text-gray-500">
           <p>
             {task}
           </p>
           <p>
-            {date}
+            <FormatDate dateValue={date} />
           </p>
         </div>
         
         
-    </div>
+    </li>
   )
 }
 

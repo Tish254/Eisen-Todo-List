@@ -1,19 +1,36 @@
-import Task from "./Task";
+import { useState } from "react";
+
+
 import AddTasks from "./AddTasks";
 import Title from "./Title";
+import AddedTasks from "./AddedTasks";
 
-const Delegate = () => {
+
+const Delegate = ({todos, addTodo}) => {
+    const [showForm, setShowForm ] = useState(false);
+    
+    const togglePopup = (e) => {
+        e.preventDefault();
+        setShowForm(!showForm);
+    }
+
+    
+    
   return (
-    <div className="w-3/5 pt-10 pr-10">
+    <div className="flex flex-col justify-between md:w-3/5 w-full pt-10 pb-10 gap-4">
         <Title title={"Delegate"}/>
-        <div className="flex flex-col items-center  gap-3 relative mt-10">
-            <Task taskLabel={"Walking to school"} task={"Delegate"} date={"Monday,13,2022"}/>
-            <AddTasks />
+        <div className="flex flex-col items-center justify-center  gap-5 relative">
+            {!showForm && <AddedTasks todos={todos}/>}
+
+            {showForm && <AddTasks addTodo={addTodo} />}
+            
         </div>
+        <button className="self-end flex items-center justify-center h-14 w-14 rounded-full bg-violet-600 -mb-9 hover:bg-violet-700" onClick={e => togglePopup(e)}> 
+            <i className={!showForm ? "fa-solid fa-plus text-white text-xl cursor-pointer" : "fa-solid fa-minus text-white text-xl cursor-pointer"}></i>
+        </button>
       
     </div>
   )
 }
-
 
 export default Delegate
