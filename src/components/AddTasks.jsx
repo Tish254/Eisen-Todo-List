@@ -1,8 +1,8 @@
 import AddTaskForm from "./AddTaskForm"
 
-const AddTasks = ({addTodo}) => {
+const AddTasks = ({addTodo, hideShow}) => {
   return (
-    <AddTaskForm addTodo={addTodo}/>
+    <AddTaskForm addTodo={addTodo} hideShow={hideShow}/>
   )
 }
 

@@ -1,0 +1,40 @@
+{
+  "todos": [
+    {
+      "id": "gh47kj",
+      "label": "Walking to School",
+      "reminder": true,
+      "dateTime": "2022-05-12T16:56",
+      "description": "To day is school day i will go to school and learn",
+      "list": [
+        "completed",
+        "do"
+      ]
+    },
+    {
+      "id": "gh6793",
+      "label": "Jumping",
+      "reminder": true,
+      "dateTime": "2022-05-12T16:56",
+      "description": "Today is exercice day i will exercise",
+      "list": [
+        "completed",
+        "schedule"
+      ]
+    },
+    {
+      "label": "adfadfa",
+      "dateTime": "2022-05-05T07:13",
+      "description": "afdadfadfa",
+      "reminder": true,
+      "id": "KZXVOoU"
+    },
+    {
+      "label": "dafafddaf",
+      "dateTime": "2022-05-05T07:15",
+      "description": "afdafdfadfadfs",
+      "reminder": true,
+      "id": "0XXszM7"
+    }
+  ]
+}

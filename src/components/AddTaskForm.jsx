@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useState} from "react"
 
-const AddTaskForm = ({addTodo}) => {
+const AddTaskForm = ({addTodo, hideShow}) => {
   
   const [formInputs, setFormInputs] = useState({});
 
@@ -10,25 +10,25 @@ const AddTaskForm = ({addTodo}) => {
     const name = event.target.name;
     const value = event.target.value;
     
-    const id = Math.floor(Math.random() * 10000) + 1;
     
-    setFormInputs(values  => ({...values, [name]: value, "id": id}))
+    setFormInputs(values  => ({...values, [name]: value}))
     
     
   }
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    addTodo(formInputs);
+
+    addTodo(formInputs, reminderOn)
+    hideShow[1](!hideShow[0]);
 
   }
 
   const toggleReminder = (event) => {
     event.preventDefault();
-    setReminderOn(!reminderOn);
-    setFormInputs( values => ({...values, "reminder": true}));
+    setReminderOn(() => !reminderOn);
+    
   }
-
 
   return (
     <form className="flex flex-col gap-3 bg-white px-3 py-4 w-full rounded" onSubmit={handleSubmit}>

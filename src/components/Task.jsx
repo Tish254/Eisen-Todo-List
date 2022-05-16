@@ -1,8 +1,13 @@
 import FormatDate from "./FormatDate";
 
-const Task = ({taskLabel, task, date}) => {
+const Task = ({taskLabel, task, date, reminder, remind, id, deleteToDo}) => {
+
+  const reminderClicked = () => {
+    remind(id);
+  }
+  
   return (
-    <li className="flex justify-center flex-col bg-white rounded py-3 px-5 w-full">
+    <li key={id} className={`flex justify-center flex-col bg-white rounded py-3 px-5 w-full ${reminder ?  "border-l-4 border-l-red-500" : ""}`}>
         
         <div className="flex items-center w-full justify-between">
           <div className="flex items-center gap-3">
@@ -12,11 +17,10 @@ const Task = ({taskLabel, task, date}) => {
           
               <h4 className="text-sm">{taskLabel}</h4>
           </div>
-          <div className="flex items-center gap-3">
-              <i className="fa-solid fa-star text-violet-600 hover:text-red-500 text-base cursor-pointer"></i>
-              <i className="fa-solid fa-list text-violet-600 hover:text-red-500 text-base cursor-pointer"></i>
+          <div className="flex items-center gap-4">
+              <i className="fa-solid fa-bell text-violet-600 hover:text-red-500 text-lg cursor-pointer" onClick={reminderClicked}></i>
           
-              <i className="fa-solid fa-trash-can text-violet-600  hover:text-red-500 text-base cursor-pointer"></i>
+              <i className="fa-solid fa-trash-can text-violet-600  hover:text-red-500 text-lg cursor-pointer" onClick={() => deleteToDo(id)}></i>
           </div>
         </div>
 

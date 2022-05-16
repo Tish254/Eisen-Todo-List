@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import NavButton from "./components/NavButton";
 import Do from "./components/Do";
@@ -15,42 +15,91 @@ import Completed from "./components/Completed";
 
 function App() {
 
-  const [added, setAdded] = useState([]);
 
-  const [todos, setTodos] = useState([
-    {
-      "id": "gh47kj",
-      "label": "Walking to School",
-      "reminder": true,
-      "dateTime": "2022-05-12T16:56",
-      "description": "To day is school day i will go to school and learn",
-      "list": [
-          "completed",
-          "do",
-      ]
-    },
-    {
-      "id": "gh6793",
-      "label": "Jumping",
-      "reminder": false,
-      "dateTime": "2022-05-12T16:56",
-      "description": "Today is exercice day i will exercise",
-      "list": [
-        "completed",
-        "schedule"
-    ]
-    },
+  const [todos, setTodos] = useState([]);
+  const [error, setError] = useState(null);
 
-  ])
 
-  const onAdd = (todoValue) => {
+  const baseURL = "http://localhost:5000/todos"
 
+
+  useEffect(() => {
+
+    const fetchTasks = async () => {
+      const todosFromServer = await getTodos();
+      setTodos(todosFromServer);
+    }
+
+    fetchTasks()
+  }, [])
+
+  // fetch Todos
+  const getTodos = async () => {
+    const res = await fetch(baseURL)
+    const data = await res.json()
+
+    return data;
+  }
+
+
+  const onAdd = async (todoValue, reminderOn) => {
+
+    todoValue.reminder = reminderOn
+
+
+    const res = await fetch(baseURL, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(todoValue)
+    })
+
+    const data = await res.json();
 
     
-    setTodos((values) => ([...values, todoValue]));
+    setTodos((values) => ([...todos, data]));
 
   }
-  
+
+  const getTodo = async (id) => {
+    const res = await fetch(`${baseURL}/${id}`);
+    const data = await res.json();
+
+    return data;
+  }
+
+
+  const  reminderTaskOn =async (id ) => {
+    
+    const todoToToggle = await getTodo(id);
+    const updTask = {...todoToToggle, reminder: !todoToToggle.reminder}
+
+    const res = await fetch(`${baseURL}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+
+      },
+      body: JSON.stringify(updTask)
+    })
+
+    const data = await res.json()
+    
+    setTodos(todos.map((todo) => todo.id === id ? {...todo, reminder: !todo.reminder} : todo))
+    
+
+  }
+
+  const deleteToDo = async (id) => {
+    
+    await fetch(`${baseURL}/${id}`, {
+      method: 'DELETE',
+    })
+    
+    
+    setTodos(todos.filter((todo) => todo.id !== id))
+  }
 
   return (
     <Router>
@@ -71,26 +120,26 @@ function App() {
 
         <Routes>
             
-            <Route path="/" element={<MyDay todos={todos} addTodo={onAdd}/>}/>
+            <Route path="/" element={<MyDay todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo}/>}/>
             
-            <Route path="/alltasks" element={<AllTasks todos={todos} addTodo={onAdd}/>}/>
+            <Route path="/alltasks" element={<AllTasks todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo}/>}/>
 
-            <Route path="/completed" element={<Completed todos={todos} addTodo={onAdd}/>}/>
-
-            
-            <Route path="/do" element={<Do todos={todos} addTodo={onAdd}/>}/>
+            <Route path="/completed" element={<Completed todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo}/>}/>
 
             
-            <Route path="/schedule" element={<Schedule todos={todos} addTodo={onAdd}/>}/>
+            <Route path="/do" element={<Do todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo}/>}/>
 
             
-            <Route path="/delegate" element={<Delegate todos={todos} addTodo={onAdd}/>}/>
+            <Route path="/schedule" element={<Schedule todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo}/>}/>
 
             
-            <Route path="/delete" element={<Delete todos={todos} addTodo={onAdd}/>}/>
+            <Route path="/delegate" element={<Delegate todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo}/>}/>
 
             
-            <Route path="/about" element={<About todos={todos} addTodo={onAdd}/>}/>
+            <Route path="/delete" element={<Delete todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo}/>}/>
+
+            
+            <Route path="/about" element={<About todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo}/>}/>
 
         </Routes>
 
