@@ -6,7 +6,7 @@ import Title from "./Title";
 import AddedTasks from "./AddedTasks";
 
 
-const Delete = ({todos, addTodo, remind, deleteToDo, menuClicked}) => {
+const Delete = ({todos, addTodo, remind, deleteToDo, menuClicked, completed}) => {
     const [showForm, setShowForm ] = useState(false);
     
     const togglePopup = (e) => {
@@ -19,7 +19,7 @@ const Delete = ({todos, addTodo, remind, deleteToDo, menuClicked}) => {
     <div className="flex flex-col justify-between md:w-3/5 w-full pt-10 pb-10 gap-4">
         <Title title={"Delete"} menuClicked={menuClicked}/>
         <div className="flex flex-col items-center justify-center  gap-5 relative overflow-y-auto h-[22rem] scrollbar-thin scrollbar-thumb-violet-200 scrollbar-track-violet-100 scrollbar-thumb-rounded">
-            {!showForm && <AddedTasks todos={todos} remind={remind} deleteToDo={ deleteToDo}/>}
+            {!showForm && <AddedTasks todos={todos} remind={remind} deleteToDo={deleteToDo} completed={completed}/>}
 
             {showForm && <AddTasks addTodo={addTodo} hideShow={[showForm, setShowForm]}/>}
             

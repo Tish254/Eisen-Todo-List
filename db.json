@@ -3,38 +3,42 @@
     {
       "id": "gh47kj",
       "label": "Walking to School",
-      "reminder": true,
+      "reminder": false,
       "dateTime": "2022-05-12T16:56",
       "description": "To day is school day i will go to school and learn",
-      "list": [
-        "completed",
-        "do"
-      ]
+      "completed": false
     },
     {
       "id": "gh6793",
       "label": "Jumping",
-      "reminder": true,
+      "reminder": false,
       "dateTime": "2022-05-12T16:56",
       "description": "Today is exercice day i will exercise",
-      "list": [
-        "completed",
-        "schedule"
-      ]
+      "completed": false
     },
     {
       "label": "adfadfa",
       "dateTime": "2022-05-05T07:13",
       "description": "afdadfadfa",
       "reminder": true,
-      "id": "KZXVOoU"
+      "id": "KZXVOoU",
+      "completed": false
     },
     {
       "label": "dafafddaf",
       "dateTime": "2022-05-05T07:15",
       "description": "afdafdfadfadfs",
       "reminder": true,
-      "id": "0XXszM7"
+      "id": "0XXszM7",
+      "completed": false
+    },
+    {
+      "label": "Hello",
+      "dateTime": "2022-05-12T12:45",
+      "description": "dadfadfadfafadf",
+      "reminder": false,
+      "id": "OIvfgv3",
+      "completed": false
     }
   ]
 }

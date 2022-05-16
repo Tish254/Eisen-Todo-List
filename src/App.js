@@ -102,8 +102,26 @@ function App() {
   }
 
   const menuClicked = () => {
-    console.log(menuOpen)
     setMenuOpen(!menuOpen);
+  }
+
+  const completed = async (bool, id) => {
+    
+    const todoToCheck = await getTodo(id);
+    
+    const updCheck = {...todoToCheck, completed: !bool};
+    
+    const res = await fetch(`${baseURL}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(updCheck)
+
+    })
+    
+    
+
   }
 
   return (
@@ -116,26 +134,26 @@ function App() {
 
         <Routes>
             
-            <Route path="/" element={<MyDay todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked}/>}/>
+            <Route path="/" element={<MyDay todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked}  completed={completed}/>}/>
             
-            <Route path="/alltasks" element={<AllTasks todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked}/>}/>
+            <Route path="/alltasks" element={<AllTasks todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed}/>}/>
 
-            <Route path="/completed" element={<Completed todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked}/>}/>
-
-            
-            <Route path="/do" element={<Do todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked}/>}/>
+            <Route path="/completed" element={<Completed todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed}/>}/>
 
             
-            <Route path="/schedule" element={<Schedule todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked}/>}/>
+            <Route path="/do" element={<Do todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed}/>}/>
 
             
-            <Route path="/delegate" element={<Delegate todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked}/>}/>
+            <Route path="/schedule" element={<Schedule todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed}/>}/>
 
             
-            <Route path="/delete" element={<Delete todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked}/>}/>
+            <Route path="/delegate" element={<Delegate todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed}/>}/>
 
             
-            <Route path="/about" element={<About todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked}/>}/>
+            <Route path="/delete" element={<Delete todos={todos} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed}/>}/>
+
+            
+            <Route path="/about" element={<About menuClicked={menuClicked}/>}/>
 
         </Routes>
         

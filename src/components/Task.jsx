@@ -1,6 +1,10 @@
+import { useState } from "react";
 import FormatDate from "./FormatDate";
 
-const Task = ({taskLabel, task, date, reminder, remind, id, deleteToDo}) => {
+const Task = ({taskLabel, task, date, reminder, remind, id, deleteToDo, completed}) => {
+
+  const [checked, setChecked] = useState(false);
+  
 
   const reminderClicked = () => {
     remind(id);
@@ -11,11 +15,15 @@ const Task = ({taskLabel, task, date, reminder, remind, id, deleteToDo}) => {
         
         <div className="flex items-center w-full justify-between">
           <div className="flex items-center gap-3">
-              <button className="flex justify-center items-center bg-gray-300 rounded-full w-6 h-6 p-1">
-                  <i className="fa-solid fa-check text-violet-600 text-base"></i>
+              <button className="flex justify-center items-center bg-gray-300 rounded-full w-6 h-6 p-1" onClick={() => {
+                setChecked(!checked)
+                completed(checked, id)
+              
+              }}>
+                  <i className={`${checked ? "fa-solid fa-check" : ""} text-violet-600 text-base`}></i>
               </button>
           
-              <h4 className="text-sm">{taskLabel}</h4>
+              <h4 className={`${checked ? "line-through" : ""} text-sm`}>{taskLabel}</h4>
           </div>
           <div className="flex items-center gap-4">
               <i className="fa-solid fa-bell text-violet-600 hover:text-red-500 text-lg cursor-pointer" onClick={reminderClicked}></i>
@@ -26,13 +34,12 @@ const Task = ({taskLabel, task, date, reminder, remind, id, deleteToDo}) => {
 
         <div className="flex items-center justify-start px-9 gap-3 text-[.7rem] text-gray-500">
           <p>
-            {task}
+            {checked? "Completed" : task}
           </p>
           <p>
             <FormatDate dateValue={date} />
           </p>
         </div>
-        
         
     </li>
   )
