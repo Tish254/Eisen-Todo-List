@@ -6,7 +6,7 @@
       "reminder": false,
       "dateTime": "2022-05-12T16:56",
       "description": "To day is school day i will go to school and learn",
-      "completed": false
+      "completed": true
     },
     {
       "id": "gh6793",
@@ -14,7 +14,7 @@
       "reminder": false,
       "dateTime": "2022-05-12T16:56",
       "description": "Today is exercice day i will exercise",
-      "completed": false
+      "completed": true
     },
     {
       "label": "adfadfa",
@@ -22,7 +22,7 @@
       "description": "afdadfadfa",
       "reminder": true,
       "id": "KZXVOoU",
-      "completed": false
+      "completed": true
     },
     {
       "label": "dafafddaf",
@@ -30,15 +30,23 @@
       "description": "afdafdfadfadfs",
       "reminder": true,
       "id": "0XXszM7",
-      "completed": false
+      "completed": true
     },
     {
       "label": "Hello",
       "dateTime": "2022-05-12T12:45",
       "description": "dadfadfadfafadf",
-      "reminder": false,
+      "reminder": true,
       "id": "OIvfgv3",
       "completed": false
+    },
+    {
+      "label": "adfadafdf",
+      "dateTime": "2022-05-20T17:26",
+      "description": "dfadfadfadfa",
+      "reminder": false,
+      "id": "a1W8DOa",
+      "completed": true
     }
   ]
 }

@@ -9,7 +9,6 @@ import AddedTasks from "./AddedTasks";
 const MyDay = ({todos, addTodo, remind, deleteToDo, menuClicked, completed}) => {
     const [showForm, setShowForm ] = useState(false);
 
-    console.log(completed)
     
     const togglePopup = (e) => {
         e.preventDefault();
