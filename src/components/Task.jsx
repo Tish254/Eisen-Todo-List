@@ -1,26 +1,47 @@
-const Task = ({taskLabel}) => {
+import { useState } from "react";
+import FormatDate from "./FormatDate";
+
+const Task = ({taskLabel, task, date, reminder, remind, id, deleteToDo, completed}) => {
+
+  const [checked, setChecked] = useState(false);
+  
+
+  const reminderClicked = () => {
+    remind(id);
+  }
+  
   return (
-    <div className="flex items-center">
+    <li key={id} className={`flex justify-center flex-col bg-white rounded py-3 px-5 w-full ${reminder ?  "border-l-4 border-l-red-500" : ""}`}>
         
-        <div className="flex items-center">
-            <button className="flex justify-center items-center bg-violet-600 rounded-full w-7 h-7 p-1">
-                <i className="fa-solid fa-check text-white"></i>
-            </button>
-            
-            <h4>{taskLabel}</h4>
+        <div className="flex items-center w-full justify-between">
+          <div className="flex items-center gap-3">
+              <button className="flex justify-center items-center bg-gray-300 rounded-full w-6 h-6 p-1" onClick={() => {
+                setChecked(!checked)
+                completed(checked, id)
+              
+              }}>
+                  <i className={`${checked ? "fa-solid fa-check" : ""} text-violet-600 text-base`}></i>
+              </button>
+          
+              <h4 className={`${checked ? "line-through" : ""} text-sm`}>{taskLabel}</h4>
+          </div>
+          <div className="flex items-center gap-4">
+              <i className="fa-solid fa-bell text-violet-600 hover:text-red-500 text-lg cursor-pointer" onClick={reminderClicked}></i>
+          
+              <i className="fa-solid fa-trash-can text-violet-600  hover:text-red-500 text-lg cursor-pointer" onClick={() => deleteToDo(id)}></i>
+          </div>
         </div>
 
-        <div className="flex items-center">
-            <i className="fa-solid fa-star text-violet-600"></i>
-
-            <i className="fa-solid fa-list text-violet-600"></i>
-            
-            <i className="fa-solid fa-trash-can text-violet-600"></i>
-
+        <div className="flex items-center justify-start px-9 gap-3 text-[.7rem] text-gray-500">
+          <p>
+            {checked? "Completed" : task}
+          </p>
+          <p>
+            <FormatDate dateValue={date} />
+          </p>
         </div>
         
-        
-    </div>
+    </li>
   )
 }
 

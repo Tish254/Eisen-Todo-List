@@ -1,19 +1,8 @@
-const AddTasks = () => {
-  return (
-    
-    <div>
-        <form>
-            <label>
-                Enter the task name
-            </label>
+import AddTaskForm from "./AddTaskForm"
 
-            <input type="text"/>
-            
-        </form>
-        <button>
-            <i className="fa-solid fa-plus"></i>
-        </button>
-    </div>
+const AddTasks = ({addTodo, hideShow}) => {
+  return (
+    <AddTaskForm addTodo={addTodo} hideShow={hideShow}/>
   )
 }
 
