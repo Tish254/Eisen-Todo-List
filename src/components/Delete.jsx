@@ -13,7 +13,6 @@ const Delete = ({todos, addTodo, remind, deleteToDo, menuClicked}) => {
         e.preventDefault();
         setShowForm(!showForm);
     }
-
     
     
   return (
