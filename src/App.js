@@ -109,7 +109,7 @@ function App() {
     
     const todoToCheck = await getTodo(id);
     
-    const updCheck = {...todoToCheck, completed: !bool};
+    const updCheck = {...todoToCheck, completedTask: !bool};
     
     const res = await fetch(`${baseURL}/${id}`, {
       method: 'PUT',
@@ -120,6 +120,7 @@ function App() {
 
     })
     
+    setTodos(todos.map((todo) => todo.id === id ? {...todo, completedTask: !todo.completedTask} : todo))
     
 
   }

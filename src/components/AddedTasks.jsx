@@ -8,8 +8,9 @@ const AddedTasks = ({todos, remind, deleteToDo, completed}) => {
         {todos.map((todo) => {
             
             return (
-                <>
-                    <Task key={todo.id} taskLabel={todo.label} task={"Tasks"} date={todo.dateTime} reminder={todo.reminder} remind={remind} id={todo.id} deleteToDo={deleteToDo} completed={completed}/>
+                <>  
+
+                    <Task key={todo.id} taskLabel={todo.label} task={"Tasks"} date={todo.dateTime} reminder={todo.reminder} remind={remind} id={todo.id} deleteToDo={deleteToDo} completed={completed} markedCompleted = {todo.completedTask}/>
     
                 </>
 
