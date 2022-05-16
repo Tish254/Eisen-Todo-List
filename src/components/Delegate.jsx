@@ -22,7 +22,7 @@ const Delegate = ({todos, addTodo, remind, deleteToDo, menuClicked, completed}) 
         <div className="flex flex-col items-center justify-center  gap-5 relative overflow-y-auto h-[22rem] scrollbar-thin scrollbar-thumb-violet-200 scrollbar-track-violet-100 scrollbar-thumb-rounded">
             {!showForm && <AddedTasks todos={todos} remind={remind} deleteToDo={deleteToDo} completed={completed}/>}
 
-            {showForm && <AddTasks addTodo={addTodo} hideShow={[showForm, setShowForm]}/>}
+            {showForm && <AddTasks addTodo={addTodo} hideShow={[showForm, setShowForm]} whereAt={"delegate"}/>}
             
         </div>
         <button className="self-end flex items-center justify-center h-14 w-14 rounded-full bg-violet-600 -mb-9 hover:bg-violet-700" onClick={e => togglePopup(e)}> 

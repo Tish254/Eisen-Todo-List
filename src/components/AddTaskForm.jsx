@@ -1,6 +1,6 @@
 import { useState} from "react"
 
-const AddTaskForm = ({addTodo, hideShow}) => {
+const AddTaskForm = ({addTodo, hideShow, whereAt}) => {
   
   const [formInputs, setFormInputs] = useState({});
 
@@ -11,7 +11,7 @@ const AddTaskForm = ({addTodo, hideShow}) => {
     const value = event.target.value;
     
     
-    setFormInputs(values  => ({...values, [name]: value}))
+    setFormInputs(values  => ({...values, [name]: value }))
     
     
   }
@@ -19,7 +19,7 @@ const AddTaskForm = ({addTodo, hideShow}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    addTodo(formInputs, reminderOn)
+    addTodo(formInputs, reminderOn, whereAt)
     hideShow[1](!hideShow[0]);
 
   }

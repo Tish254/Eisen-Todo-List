@@ -10,7 +10,7 @@ const AddedTasks = ({todos, remind, deleteToDo, completed}) => {
             return (
                 <>  
 
-                    <Task key={todo.id} taskLabel={todo.label} task={"Tasks"} date={todo.dateTime} reminder={todo.reminder} remind={remind} id={todo.id} deleteToDo={deleteToDo} completed={completed} markedCompleted = {todo.completedTask}/>
+                    <Task key={todo.id} taskLabel={todo.label} date={todo.dateTime} reminder={todo.reminder} remind={remind} id={todo.id} deleteToDo={deleteToDo} completed={completed} markedCompleted = {todo.completedTask} whereAt={todo.whereAt}/>
     
                 </>
 
