@@ -1,12 +1,21 @@
-const Title = ({title}) => {
+import moment from "moment";
+
+const Title = ({title, menuClicked}) => {
   return (
-    <div className="self-start justify-start">
-        <h1 className="relative text-3xl font-bold before:block before:content[''] before:-mt-2 before:h-1.5 before:absolute before:left-0 before:w-9 before:rounded before:bg-violet-600">
-            {title}
-        </h1>
-        <p className="font-extralight">
-            Friday, May 13, 2022
-        </p>
+    <div className="flex justify-between">
+
+        <div className="self-start justify-start">
+          <h1 className="relative text-3xl font-bold before:block before:content[''] before:-mt-2.5 before:h-1.5 before:absolute before:left-0 before:w-12 md:before:w-10 before:rounded before:bg-violet-600">
+              {title}
+          </h1>
+          <p className="font-extralight">
+              {moment().format('MMMM Do YYYY')}
+          </p>
+        </div>
+        <div>
+          <i className="md:hidden in-line block fa-solid fa-bars-staggered text-5xl  font-bold mb-5  text-black-900 hover:text-violet-900" onClick={menuClicked}></i>
+
+        </div>
     </div>
   )
 }
