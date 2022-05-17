@@ -1,24 +1,26 @@
 import { useState } from "react";
 import FormatDate from "./FormatDate";
 
-const Task = ({taskLabel, date, reminder, remind, id, deleteToDo, completed, markedCompleted, whereAt}) => {
+const Task = ({taskLabel, date, reminder, remind, id, deleteToDo, completed, markedCompleted, whereAt, counted}) => {
 
   const [checked, setChecked] = useState(false);
   
 
   const reminderClicked = () => {
     remind(id);
+    
   }
   
   return (
-    <li key={id} className={`flex justify-center flex-col bg-white rounded py-3 px-5 w-full ${reminder ?  "border-l-4 border-l-red-500" : ""}`}>
+    <li className={`flex justify-center flex-col bg-white rounded py-3 px-5 w-full ${reminder ?  "border-l-4 border-l-red-500" : ""}`}>
         
         <div className="flex items-center w-full justify-between">
           <div className="flex items-center gap-3">
               <button className="flex justify-center items-center bg-gray-300 rounded-full w-6 h-6 p-1" onClick={() => {
                 setChecked(prev => !prev)
-                
-                completed(whereAt === "completed" ? true: checked, id)
+
+                completed(whereAt === "completed" ? true: checked, id, whereAt)
+
               
               }}>
                   <i className={`${markedCompleted ? "fa-solid fa-check" : ""} text-violet-600 text-base`}></i>
