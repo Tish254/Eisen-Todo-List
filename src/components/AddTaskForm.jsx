@@ -1,17 +1,14 @@
 import { useState} from "react"
 
-const AddTaskForm = ({addTodo, hideShow, whereAt}) => {
+const AddTaskForm = ({addTodo, hideShow, whereAt, formDetails}) => {
   
-  const [formInputs, setFormInputs] = useState({});
-
-  const [reminderOn, setReminderOn] = useState(false);
-
+  
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     
     
-    setFormInputs(values  => ({...values, [name]: value }))
+    formDetails[1](values  => ({...values, [name]: value}))
     
     
   }
@@ -19,14 +16,16 @@ const AddTaskForm = ({addTodo, hideShow, whereAt}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    addTodo(formInputs, reminderOn, whereAt)
+    addTodo(formDetails[0], whereAt)
     hideShow[1](!hideShow[0]);
+
+    formDetails[1]({})
 
   }
 
   const toggleReminder = (event) => {
     event.preventDefault();
-    setReminderOn(() => !reminderOn);
+    formDetails[1](values  => ({...values, ["reminder"]: !formDetails[0].reminder}))
     
   }
 
@@ -38,17 +37,17 @@ const AddTaskForm = ({addTodo, hideShow, whereAt}) => {
             <label className="w-full">
               Enter Task:
               <input className="bg-gray-300 p-2 w-full rounded focus:outline-violet-600" type="text" 
-               placeholder="Enter task name...." name="label" value= {formInputs.label || ""} onChange={handleChange}/>
+               placeholder="Enter task name...." name="label" value= {formDetails[0].label || ""} onChange={handleChange}/>
 
             </label>
           </div>
           <div className="flex items-center gap-2 w-full">
             <label className="w-full">
               Pick Date & Set Reminder:
-              <input className="bg-gray-300 p-2 w-full rounded focus:outline-violet-600 text-violet-600" type="datetime-local" placeholder="Select Date" name="dateTime" value= {formInputs.dateTime || ""} onChange={handleChange}/>
+              <input className="bg-gray-300 p-2 w-full rounded focus:outline-violet-600 text-violet-600" type="datetime-local" placeholder="Select Date" name="dateTime" value= {formDetails[0].dateTime || ""} onChange={handleChange}/>
 
             </label>
-            <button className={`self-end flex items-center justify-center h-10 w-10 rounded bg-violet-600 hover:bg-violet-700 ${reminderOn ? "outline outline-offset-2 outline-2 outline-red-600": "" }`} onClick={toggleReminder}>
+            <button className={`self-end flex items-center justify-center h-10 w-10 rounded bg-violet-600 hover:bg-violet-700 ${formDetails[0].reminder ? "outline outline-offset-2 outline-2 outline-red-600": "" }`} onClick={toggleReminder}>
               <i className="fa-solid fa-bell text-white text-xl cursor-pointer"></i>
               
             </button>
@@ -57,7 +56,7 @@ const AddTaskForm = ({addTodo, hideShow, whereAt}) => {
         <div className="flex items-center w-full">
           <label className="w-full">
             Describe your task:
-            <textarea className="bg-gray-300 p-2 w-full h-[5rem] rounded focus:outline-violet-600" placeholder="Describe your task...." name="description" value= {formInputs.description || ""} onChange={handleChange}></textarea>
+            <textarea className="bg-gray-300 p-2 w-full h-[5rem] rounded focus:outline-violet-600" placeholder="Describe your task...." name="description" value= {formDetails[0].description || ""} onChange={handleChange}></textarea>
           </label>
         </div>
         <input className="self-start bg-violet-600 text-white rounded py-3 px-10 hover:bg-violet-700" type="submit" value="Submit" />

@@ -17,7 +17,9 @@ function App() {
 
 
   const [todos, setTodos] = useState([]);
+
   const [menuOpen, setMenuOpen] = useState(false);
+  const [formInputs, setFormInputs] = useState({});
   const [countedTasks, setCountedTasks] = useState({});
 
   let myObjOfCounts = {};
@@ -45,12 +47,34 @@ function App() {
     return data;
   }
 
+  const updateToDo = async (taskUpdate) => {
 
-  const onAdd = async (todoValue, reminderOn, whereAt) => {
+    const toUpdate = {"label": taskUpdate.label, "dateTime": taskUpdate.dateTime, "description": taskUpdate.description,"reminder": taskUpdate.reminder}
 
-    todoValue.reminder = reminderOn;
-    todoValue.whereAt = whereAt;
+    await fetch(`${baseURL}/${taskUpdate.id}`, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type" : "application/json"
+
+      },
+      body: JSON.stringify(toUpdate)
+    })
     
+    setTodos(todos.map((todo) => todo.id === taskUpdate.id ? {...todo, ...toUpdate} : todo))
+
+  }
+
+
+  const onAdd = async (todoValue, whereAt) => {
+
+    if (todoValue.whereAt == `edit${whereAt}`) {
+      await updateToDo(todoValue);
+      return;
+    }
+
+    todoValue.whereAt = whereAt;
+    setCountedTasks(prevCounts => ({...prevCounts, [whereAt]: countedTasks[whereAt] + 1}))
+
     const res = await fetch(baseURL, {
       method: 'POST',
       headers: {
@@ -175,23 +199,23 @@ function App() {
 
         <Routes>
             
-            <Route path="/" element={<MyDay todos={filteDataMyday} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked}  completed={completed} counted={[myObjOfCounts, setCountedTasks]}/>}/>
+            <Route path="/" element={<MyDay todos={filteDataMyday} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked}  completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
             
-            <Route path="/alltasks" element={<AllTasks todos={filteDataAlltasks} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]}/>}/>
+            <Route path="/alltasks" element={<AllTasks todos={filteDataAlltasks} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
 
-            <Route path="/completed" element={<Completed todos={filteDataCompleted} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]}/>}/>
-
-            
-            <Route path="/do" element={<Do todos={filteDataDo} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]}/>}/>
+            <Route path="/completed" element={<Completed todos={filteDataCompleted} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
 
             
-            <Route path="/schedule" element={<Schedule todos={filteDataSchedule} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]}/>}/>
+            <Route path="/do" element={<Do todos={filteDataDo} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
 
             
-            <Route path="/delegate" element={<Delegate todos={filteDataDelegate} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]}/>}/>
+            <Route path="/schedule" element={<Schedule todos={filteDataSchedule} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
 
             
-            <Route path="/delete" element={<Delete todos={filteDataDelete} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]}/>}/>
+            <Route path="/delegate" element={<Delegate todos={filteDataDelegate} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
+
+            
+            <Route path="/delete" element={<Delete todos={filteDataDelete} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
 
             
             <Route path="/about" element={<About menuClicked={menuClicked}/>}/>

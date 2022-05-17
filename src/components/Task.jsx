@@ -1,13 +1,20 @@
 import { useState } from "react";
 import FormatDate from "./FormatDate";
+import AddTaskForm from "./AddTaskForm";
 
-const Task = ({taskLabel, date, reminder, remind, id, deleteToDo, completed, markedCompleted, whereAt, counted}) => {
+const Task = ({taskLabel, date, reminder, remind, id, deleteToDo, completed, markedCompleted, whereAt, counted, hideShow, formDetails, description}) => {
 
   const [checked, setChecked] = useState(false);
   
 
   const reminderClicked = () => {
     remind(id);
+    
+  }
+  
+  const editClicked = () => {
+    formDetails[1]({["id"]: id, label:taskLabel, dateTime:date, ["description"]: description, ["whereAt"]: `edit${whereAt}`, ["reminder"] : reminder})
+    hideShow[1](!hideShow[0]);
     
   }
   
@@ -29,6 +36,8 @@ const Task = ({taskLabel, date, reminder, remind, id, deleteToDo, completed, mar
               <h4 className={`${markedCompleted ? "line-through" : ""} text-sm`}>{taskLabel}</h4>
           </div>
           <div className="flex items-center gap-4">
+              {whereAt !== "completed" && <i className="fa-solid fa-pen-to-square text-violet-600 hover:text-red-500 text-lg cursor-pointer" onClick={editClicked}></i>}
+              
               <i className="fa-solid fa-bell text-violet-600 hover:text-red-500 text-lg cursor-pointer" onClick={reminderClicked}></i>
           
               <i className="fa-solid fa-trash-can text-violet-600  hover:text-red-500 text-lg cursor-pointer" onClick={() => deleteToDo(id)}></i>
