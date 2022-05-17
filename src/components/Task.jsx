@@ -1,6 +1,5 @@
 import { useState } from "react";
 import FormatDate from "./FormatDate";
-import AddTaskForm from "./AddTaskForm";
 
 const Task = ({taskLabel, date, reminder, remind, id, deleteToDo, completed, markedCompleted, whereAt, counted, hideShow, formDetails, description}) => {
 

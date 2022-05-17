@@ -10,6 +10,7 @@ import AllTasks from "./components/AllTasks";
 import MyDay from "./components/MyDay";
 import Delegate from "./components/Delegate";
 import Completed from "./components/Completed";
+import GoogleCApi from "./components/GoogleCApi";
 
 
 
@@ -178,6 +179,7 @@ function App() {
   const filteDataMyday = filterDataCount(todos, "myday");
   const filteDataAlltasks = filterDataCount(todos, "alltasks");
   const filteDataCompleted = filterDataCount(todos, "completed");
+  const filteDataGoogle = filterDataCount(todos, "google")
   const filteDataDo = filterDataCount(todos, "do");
   const filteDataSchedule = filterDataCount(todos, "schedule");
   const filteDataDelegate = filterDataCount(todos, "delegate");
@@ -204,6 +206,8 @@ function App() {
             <Route path="/alltasks" element={<AllTasks todos={filteDataAlltasks} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
 
             <Route path="/completed" element={<Completed todos={filteDataCompleted} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
+
+            <Route path="/google_calendar" element={<GoogleCApi todos={filteDataGoogle} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
 
             
             <Route path="/do" element={<Do todos={filteDataDo} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
