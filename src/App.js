@@ -10,7 +10,7 @@ import AllTasks from "./components/AllTasks";
 import MyDay from "./components/MyDay";
 import Delegate from "./components/Delegate";
 import Completed from "./components/Completed";
-import GoogleCApi from "./components/GoogleCApi";
+import GoogleCalendarApi from "./components/GoogleCalendarApi";
 
 
 
@@ -68,7 +68,7 @@ function App() {
 
   const onAdd = async (todoValue, whereAt) => {
 
-    if (todoValue.whereAt == `edit${whereAt}`) {
+    if (todoValue.whereAt === `edit${whereAt}`) {
       await updateToDo(todoValue);
       return;
     }
@@ -207,7 +207,7 @@ function App() {
 
             <Route path="/completed" element={<Completed todos={filteDataCompleted} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
 
-            <Route path="/google_calendar" element={<GoogleCApi todos={filteDataGoogle} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
+            <Route path="/google_calendar" element={<GoogleCalendarApi todos={filteDataGoogle} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
 
             
             <Route path="/do" element={<Do todos={filteDataDo} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
