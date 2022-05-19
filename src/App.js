@@ -10,8 +10,8 @@ import AllTasks from "./components/AllTasks";
 import MyDay from "./components/MyDay";
 import Delegate from "./components/Delegate";
 import Completed from "./components/Completed";
-import GoogleCalendarApi from "./components/GoogleCalendarApi";
-
+import GoogleCalendar from "./components/GoogleCalendar";
+import GoogleApi from "./components/GoogleApi";
 
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
 
   const [todos, setTodos] = useState([]);
 
+  const [loggedIn, setLoggedIn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [formInputs, setFormInputs] = useState({});
   const [countedTasks, setCountedTasks] = useState({});
@@ -195,10 +196,16 @@ function App() {
     <Router>
       <div className=" relative mx-auto my-5 px-4 md:px-2 py-2 flex justify-center md:justify-start gap-10 md:w-[80%] w-[100%] bg-gray-300 rounded
         ">
+        <GoogleApi isLoggedIn={loggedIn} setIsLoggedIn={setLoggedIn}/>
 
-          <AsideNav styler={"hidden md:flex md:flex-col md:items-center w-[30%] bg-white pt-8 pb-12 rounded"} counted={myObjOfCounts}/>
-          {menuOpen && <AsideNav styler={"md:hidden flex flex-col items-center left-0 top-[7rem] bottom-20 z-10 absolute bg-white pt-8 pb-12 opacity-90 rounded w-full"} counted={myObjOfCounts}/>}
+        {loggedIn &&
+        <AsideNav styler={"hidden md:flex md:flex-col md:items-center w-[30%] bg-white pt-8 pb-12 rounded"} counted={myObjOfCounts}/>}
 
+        {loggedIn && menuOpen &&
+        <AsideNav styler={"md:hidden flex flex-col items-center left-0 top-[7rem] bottom-20 z-10 absolute bg-white pt-8 pb-12 opacity-90 rounded w-full"} counted={myObjOfCounts}/>}
+
+        {loggedIn &&
+        
         <Routes>
             
             <Route path="/" element={<MyDay todos={filteDataMyday} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked}  completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
@@ -207,7 +214,7 @@ function App() {
 
             <Route path="/completed" element={<Completed todos={filteDataCompleted} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
 
-            <Route path="/google_calendar" element={<GoogleCalendarApi todos={filteDataGoogle} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
+            <Route path="/google_calendar" element={<GoogleCalendar todos={filteDataGoogle} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
 
             
             <Route path="/do" element={<Do todos={filteDataDo} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
@@ -224,7 +231,7 @@ function App() {
             
             <Route path="/about" element={<About menuClicked={menuClicked}/>}/>
 
-        </Routes>
+        </Routes> }
         
         
       </div>
