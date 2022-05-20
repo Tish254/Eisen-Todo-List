@@ -1,52 +1,72 @@
 {
   "todos": [
     {
-      "id": "gh47kj",
-      "label": "Walking to School",
-      "reminder": false,
-      "dateTime": "2022-05-12T16:56",
-      "description": "To day is school day i will go to school and learn",
-      "completed": true
-    },
-    {
-      "id": "gh6793",
-      "label": "Jumping",
-      "reminder": false,
-      "dateTime": "2022-05-12T16:56",
-      "description": "Today is exercice day i will exercise",
-      "completed": true
-    },
-    {
-      "label": "adfadfa",
-      "dateTime": "2022-05-05T07:13",
-      "description": "afdadfadfa",
+      "label": "Hello Jumping",
+      "dateTime": "2022-05-11T13:29",
+      "description": "adfadfafd",
       "reminder": true,
-      "id": "KZXVOoU",
-      "completed": true
-    },
-    {
-      "label": "dafafddaf",
-      "dateTime": "2022-05-05T07:15",
-      "description": "afdafdfadfadfs",
-      "reminder": true,
-      "id": "0XXszM7",
-      "completed": true
-    },
-    {
-      "label": "Hello",
-      "dateTime": "2022-05-12T12:45",
-      "description": "dadfadfadfafadf",
-      "reminder": true,
-      "id": "OIvfgv3",
-      "completed": false
+      "whereAt": "completed",
+      "id": 1,
+      "completedTask": true
     },
     {
       "label": "adfadafdf",
-      "dateTime": "2022-05-20T17:26",
-      "description": "dfadfadfadfa",
+      "dateTime": "2022-05-12T15:30",
+      "description": "fdfadfadfadfdfa",
       "reminder": false,
-      "id": "a1W8DOa",
-      "completed": true
+      "whereAt": "completed",
+      "id": 3,
+      "completedTask": true
+    },
+    {
+      "label": "ADFAFDF TISH dafdfadf",
+      "dateTime": "2022-05-25T15:56",
+      "description": "ADFADFADSF",
+      "reminder": true,
+      "whereAt": "alltasks",
+      "id": 11,
+      "completedTask": false
+    },
+    {
+      "label": "SLOPE",
+      "dateTime": "2022-05-20T15:56",
+      "description": "ADFADFASFadfaf",
+      "reminder": true,
+      "whereAt": "alltasks",
+      "id": 12,
+      "completedTask": false
+    },
+    {
+      "reminder": true,
+      "label": "adafdaf",
+      "dateTime": "2022-05-14T16:21",
+      "description": "adfadfasfas",
+      "whereAt": "alltasks",
+      "id": 13,
+      "completedTask": false
+    },
+    {
+      "label": "adfafdf",
+      "dateTime": "2022-05-30T18:27",
+      "reminder": true,
+      "description": "dadfafasff",
+      "whereAt": "completed",
+      "id": 14,
+      "completedTask": true
+    },
+    {
+      "label": "adfadfafda",
+      "dateTime": "2022-05-21T23:41",
+      "description": "afdafdfafdfa",
+      "whereAt": "myday",
+      "id": 15
+    },
+    {
+      "label": "adaffdafda",
+      "dateTime": "2022-05-06T23:41",
+      "description": "adfadfaf",
+      "whereAt": "do",
+      "id": 16
     }
   ]
 }
