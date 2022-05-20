@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.4aae06da.css",
-    "main.js": "/static/js/main.e29d97cc.js",
-    "index.html": "/index.html",
-    "main.4aae06da.css.map": "/static/css/main.4aae06da.css.map",
-    "main.e29d97cc.js.map": "/static/js/main.e29d97cc.js.map"
+    "main.css": "/Eisen-Todo-List/static/css/main.4aae06da.css",
+    "main.js": "/Eisen-Todo-List/static/js/main.e29d97cc.js",
+    "index.html": "/Eisen-Todo-List/index.html",
+    "main.4aae06da.css.map": "/Eisen-Todo-List/static/css/main.4aae06da.css.map",
+    "main.e29d97cc.js.map": "/Eisen-Todo-List/static/js/main.e29d97cc.js.map"
   },
   "entrypoints": [
     "static/css/main.4aae06da.css",
