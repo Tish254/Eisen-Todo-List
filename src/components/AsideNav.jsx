@@ -1,10 +1,20 @@
 import NavButton from "./NavButton";
 
-const AsideNav = ({styler, counted}) => {
+const AsideNav = ({styler, counted, userCredentials}) => {
   return (
     <>
         <div className={`${styler} overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-violet-200 scrollbar-track-violet-100 scrollbar-thumb-rounded`}>
-          
+          <div className="flex gap-4 items-center mb-5">
+            <div className="w-[3rem] h-[3rem] rounded-full">
+              <img className="w-[3rem] h-[3rem] rounded-full" src={userCredentials.picture} alt="profile"/>
+            </div>
+            <div>
+              <p className="capitalize font-bold">{userCredentials.name}</p>
+              <button className=" text-violet-500 hover:text-violet-900 underline">
+                Logout
+              </button>
+            </div>
+          </div>
 
           <NavButton path="/"  img={<i className="fa-solid fa-house text-violet-600 text-base font-bold"></i>} btnName={"My Day"} taskCount={counted.myday}/>
 

@@ -1,97 +1,68 @@
-import { gapi } from "gapi-script";
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from 'react';
+import jwt_decode from 'jwt-decode';
 
-const GoogleApi = ({isLoggedIn, setIsLoggedIn}) => {
+const GoogleApi = ({isLoggedIn, setIsLoggedIn, setUserCredentials}) => {
 
-    const [googleAuth, setGoogleAuth] = useState();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [imageUrl, setImageUrl] = useState();
-
-    const CLIENT_ID = '788375080665-la28eo3kv6k7nleerqjtvf9c1louegav.apps.googleusercontent.com';
-    // const API_KEY = 'AIzaSyBeJ8ORNkqyqvm1HBNjUc0vaMH7gYQfw78';
-    // const SCOPES = 'https://www.googleapis.com/auth/calendar.events';
-
+    const divRef = useRef(null);
     
+    const CLIENT_ID = '788375080665-la28eo3kv6k7nleerqjtvf9c1louegav.apps.googleusercontent.com';
+
+    const handleResponse = (resp) => {
+
+        let userDetails = jwt_decode(resp.credential);
+    
+        setUserCredentials({name: userDetails.name, picture: userDetails.picture, email: userDetails.email})
+
+        setIsLoggedIn(true);
+    
+        
+
+    }
+
     useEffect(() => {
-        gapi.load('auth2', () => {
-            (async () => {
-                const googleAuth = await gapi.auth2.init({
-                    client_id: CLIENT_ID
+        window.onload = () => {
+            window.google.accounts.id.initialize({
+                client_id: CLIENT_ID,
+                callback: handleResponse
+            });
+
+            window.google.accounts.id.renderButton(divRef.current,
+                { 
+                    theme: "filled_blue", 
+                    size: "large",
+                    text: "continue_with"
+                }
+              );
+            
+            if (!isLoggedIn) {
+                window.google.accounts.id.prompt((notification) => {
+                    console.log(notification)
                 });
 
-                setGoogleAuth(googleAuth);  
-                renderSigninButton(gapi); 
+            }
+        }
 
-            })();
-
-        }); 
-
-    });
-
-    const logOut = () => {
-        (async () => {
-            await googleAuth.signOut();
-            setIsLoggedIn(false);
-            renderSigninButton(gapi)
-        })();
-    }
-
-    const renderSigninButton = (gapi) => {
-        gapi.signin2.render('google-signin', {
-            'scope': 'profile email',
-            'width': 240,
-            'height': 50,
-            'longtitle': true,
-            'theme': 'dark',
-            'onsuccess': onSuccess,
-            'onFailure': onFailure
-
-        });
-
-    }
-
-
-    const onSuccess = (googleUser) => {
-        setIsLoggedIn(true);
-        const profile = googleUser.getBasicProfile();
-        setName(() => profile.getName());
-        setEmail(() => profile.getEmail());
-        setImageUrl(() => profile.getImageUrl());
-
-    };
-
-    const onFailure = () => {
-        setIsLoggedIn(false);
-
-    }
-
-   
-
-
+    })
+    
+    
   return (
-    <div>
-        {
-            !isLoggedIn && 
-            <div id="google-signin">
-                
-            </div>
-        }
+    <div className={!isLoggedIn ? "flex flex-col items-center justify-center gap-4 text-lg w-[50%]" : "hidden"}>
+        <div className="text-5xl font-bold text-center mb-2">
+            <h1>
+              <strong>
+                  Eisen
+              </strong>
+              <span className="line-through text-violet-900">Todo</span>
+            </h1>
+            
+        </div>
+        <p className='text-xl text-center'>
 
-        {isLoggedIn && 
-        
-            <div>
-                <div>
-                    <img src={imageUrl} alt="Profile"/>
-                </div>
-                <div>{name}</div>
-                <div>{email}</div>
-                <button className="btn-primary" onClick={logOut}>
-                    Log Out
-                </button>
-            </div>
-        }
-
+            Manage all your tasks in one place & And Yes, Yes your <strong>Google Calendar</strong> Too.
+        </p>
+        <div ref={divRef}>
+            
+        </div>
     </div>
   )
 }

@@ -1,5 +1,3 @@
-import { useState} from "react"
-
 const AddTaskForm = ({addTodo, hideShow, whereAt, formDetails}) => {
   
   
@@ -25,7 +23,7 @@ const AddTaskForm = ({addTodo, hideShow, whereAt, formDetails}) => {
 
   const toggleReminder = (event) => {
     event.preventDefault();
-    formDetails[1](values  => ({...values, ["reminder"]: !formDetails[0].reminder}))
+    formDetails[1](values  => ({...values, reminder: !formDetails[0].reminder}))
     
   }
 

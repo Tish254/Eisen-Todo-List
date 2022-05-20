@@ -12,7 +12,7 @@ const Task = ({taskLabel, date, reminder, remind, id, deleteToDo, completed, mar
   }
   
   const editClicked = () => {
-    formDetails[1]({["id"]: id, label:taskLabel, dateTime:date, ["description"]: description, ["whereAt"]: `edit${whereAt}`, ["reminder"] : reminder})
+    formDetails[1]({id: id, label:taskLabel, dateTime:date, description: description, whereAt: `edit${whereAt}`, reminder : reminder})
     hideShow[1](!hideShow[0]);
     
   }

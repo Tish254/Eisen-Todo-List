@@ -5,54 +5,18 @@
       "dateTime": "2022-05-11T13:29",
       "description": "adfadfafd",
       "reminder": true,
-      "whereAt": "alltasks",
+      "whereAt": "completed",
       "id": 1,
-      "completedTask": false
-    },
-    {
-      "label": "adfadafdf",
-      "dateTime": "2022-05-18T13:29",
-      "description": "adfafdfd",
-      "reminder": false,
-      "whereAt": "alltasks",
-      "id": 2,
-      "completedTask": false
+      "completedTask": true
     },
     {
       "label": "adfadafdf",
       "dateTime": "2022-05-12T15:30",
       "description": "fdfadfadfadfdfa",
       "reminder": false,
-      "whereAt": "alltasks",
+      "whereAt": "completed",
       "id": 3,
-      "completedTask": false
-    },
-    {
-      "label": "dafadfaf",
-      "dateTime": "2022-05-17T15:30",
-      "description": "asdfafas",
-      "reminder": false,
-      "whereAt": "alltasks",
-      "id": 4,
-      "completedTask": false
-    },
-    {
-      "label": "adfadfadf",
-      "dateTime": "2022-05-04T13:35",
-      "description": "adfadfaf",
-      "reminder": false,
-      "whereAt": "alltasks",
-      "id": 5,
-      "completedTask": false
-    },
-    {
-      "label": "adfaf",
-      "dateTime": "2022-05-19T13:38",
-      "description": "adfadfaf",
-      "reminder": false,
-      "whereAt": "alltasks",
-      "id": 6,
-      "completedTask": false
+      "completedTask": true
     },
     {
       "label": "ADFAFDF TISH dafdfadf",
