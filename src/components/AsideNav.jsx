@@ -4,16 +4,15 @@ const AsideNav = ({styler, counted, userCredentials}) => {
   return (
     <>
         <div className={`${styler} overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-violet-200 scrollbar-track-violet-100 scrollbar-thumb-rounded`}>
-          <div className="flex gap-4 items-center mb-5">
-            <div className="w-[3rem] h-[3rem] rounded-full">
-              <img className="w-[3rem] h-[3rem] rounded-full" src={userCredentials.picture} alt="profile"/>
-            </div>
+          <div className="flex gap-4 items-center mb-2 border border-1 border-violet-600 rounded-lg  self-start pr-5 md:pr-2 w-full justify-between">
             <div>
-              <p className="capitalize font-bold">{userCredentials.name}</p>
-              <button className=" text-violet-500 hover:text-violet-900 underline">
-                Logout
-              </button>
+              <img className="w-[3rem] h-[3rem] rounded-l-lg inline-block mr-2" src={userCredentials.picture} alt="profile"/>
+              <p className="capitalize font-bold inline-block">{userCredentials.name}</p>
             </div>
+                
+            <button className=" bg-violet-600 hover:bg-violet-700 text-white rounded px-4 py-1 font-medium justify-end">
+                Logout
+            </button>
           </div>
 
           <NavButton path="/"  img={<i className="fa-solid fa-house text-violet-600 text-base font-bold"></i>} btnName={"My Day"} taskCount={counted.myday}/>
