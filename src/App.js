@@ -201,10 +201,10 @@ function App() {
           <GoogleApi isLoggedIn={loggedIn} setIsLoggedIn={setLoggedIn} setUserCredentials={setUserCredentials}/>
 
         {loggedIn &&
-        <AsideNav styler={"hidden md:flex md:flex-col min-w-[30%] bg-white px-3 pt-2 pb-5 rounded"} counted={myObjOfCounts} userCredentials={userCredentials}/>}
+        <AsideNav styler={"hidden md:flex md:flex-col min-w-[30%] bg-white px-3 pt-2 pb-5 rounded"} counted={myObjOfCounts} userCredentials={userCredentials} setIsLoggedIn={setLoggedIn}/>}
 
         {loggedIn && menuOpen &&
-        <AsideNav styler={"md:hidden flex flex-col items-center w-[98%] top-[4.2rem] h-[86%] z-10 absolute bg-white pt-2 pb-5 px-3 opacity-98 rounded w-full"} counted={myObjOfCounts} userCredentials={userCredentials}/>}
+        <AsideNav styler={"md:hidden flex flex-col items-center w-[98%] top-[4.2rem] h-[86%] z-10 absolute bg-white pt-2 pb-5 px-3 opacity-98 rounded w-full"} counted={myObjOfCounts} userCredentials={userCredentials} setIsLoggedIn={setLoggedIn}/>}
 
         {loggedIn &&
         

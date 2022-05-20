@@ -1,16 +1,22 @@
 import NavButton from "./NavButton";
 
-const AsideNav = ({styler, counted, userCredentials}) => {
+const AsideNav = ({styler, counted, userCredentials, setIsLoggedIn}) => {
+  const logoutClicked = () => {
+    window.google.accounts.id.disableAutoSelect();
+    setIsLoggedIn(false);
+
+  }
+
   return (
     <>
         <div className={`${styler} overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-violet-200 scrollbar-track-violet-100 scrollbar-thumb-rounded`}>
           <div className="flex gap-4 items-center mb-2 border border-1 border-violet-600 rounded-lg  self-start pr-5 md:pr-2 w-full justify-between">
-            <div>
-              <img className="w-[3rem] h-[3rem] rounded-l-lg inline-block mr-2" src={userCredentials.picture} alt="profile"/>
-              <p className="capitalize font-bold inline-block">{userCredentials.name}</p>
+            <div className="flex items-center gap-2">
+              <img className="w-[3rem] h-[3rem] rounded-l-lg" src={userCredentials.picture} alt="profile"/>
+              <p className="capitalize font-bold">{userCredentials.name}</p>
             </div>
                 
-            <button className=" bg-violet-600 hover:bg-violet-700 text-white rounded px-4 py-1 font-medium justify-end">
+            <button className=" bg-violet-600 hover:bg-violet-700 text-white rounded px-4 py-1 font-medium justify-end" onClick={logoutClicked}>
                 Logout
             </button>
           </div>
