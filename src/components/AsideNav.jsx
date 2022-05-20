@@ -21,23 +21,23 @@ const AsideNav = ({styler, counted, userCredentials, setIsLoggedIn}) => {
             </button>
           </div>
 
-          <NavButton path="/"  img={<i className="fa-solid fa-house text-violet-600 text-base font-bold"></i>} btnName={"My Day"} taskCount={counted.myday}/>
+          <NavButton path="/Eisen-Todo-List"  img={<i className="fa-solid fa-house text-violet-600 text-base font-bold"></i>} btnName={"My Day"} taskCount={counted.myday}/>
 
-          <NavButton path="/alltasks"  img={<i className="fa-solid fa-list-check text-violet-600 text-base font-bold"></i>} btnName={"Tasks"} taskCount={counted.alltasks}/>
+          <NavButton path="/Eisen-Todo-List/alltasks"  img={<i className="fa-solid fa-list-check text-violet-600 text-base font-bold"></i>} btnName={"Tasks"} taskCount={counted.alltasks}/>
 
-          <NavButton path="/completed"  img={<i className="fa-regular fa-circle-check text-violet-600 text-base font-bold"></i>} btnName={"Completed"} taskCount={counted.completed}/>
+          <NavButton path="/Eisen-Todo-List/completed"  img={<i className="fa-regular fa-circle-check text-violet-600 text-base font-bold"></i>} btnName={"Completed"} taskCount={counted.completed}/>
 
-          <NavButton path="/google_calendar"  img={<i className="fa-solid fa-calendar-days text-violet-600 text-base font-bold"></i>} btnName={"G-Calendar"} taskCount={counted.delete}/>
+          <NavButton path="/Eisen-Todo-List/google_calendar"  img={<i className="fa-solid fa-calendar-days text-violet-600 text-base font-bold"></i>} btnName={"G-Calendar"} taskCount={counted.delete}/>
 
-          <NavButton path="/do"  img={<i className="fa-solid fa-circle text-base font-bold text-[#0CC078]"></i>} btnName={"Do It "} taskCount={counted.do}/>
+          <NavButton path="/Eisen-Todo-List/do"  img={<i className="fa-solid fa-circle text-base font-bold text-[#0CC078]"></i>} btnName={"Do It "} taskCount={counted.do}/>
 
-          <NavButton path="/schedule"  img={<i className="fa-solid fa-circle text-base font-bold text-[#FCFC99]"></i>} btnName={"Schedule It"} taskCount={counted.schedule}/>
+          <NavButton path="/Eisen-Todo-List/schedule"  img={<i className="fa-solid fa-circle text-base font-bold text-[#FCFC99]"></i>} btnName={"Schedule It"} taskCount={counted.schedule}/>
 
-          <NavButton path="/delegate"  img={<i className="fa-solid fa-circle text-base font-bold text-[#A8E4EF]"></i>} btnName={"Delegate It"} taskCount={counted.delegate}/>
+          <NavButton path="/Eisen-Todo-List/delegate"  img={<i className="fa-solid fa-circle text-base font-bold text-[#A8E4EF]"></i>} btnName={"Delegate It"} taskCount={counted.delegate}/>
 
-          <NavButton path="/delete"  img={<i className="fa-solid fa-circle text-base font-bold text-[#FB6962]"></i>} btnName={"Delete It"} taskCount={counted.delete}/>
+          <NavButton path="/Eisen-Todo-List/delete"  img={<i className="fa-solid fa-circle text-base font-bold text-[#FB6962]"></i>} btnName={"Delete It"} taskCount={counted.delete}/>
 
-          <NavButton path="/about"   img={<i className="fa-solid fa-circle-info text-violet-600 text-base font-bold"></i>} btnName={"About"}/>
+          <NavButton path="/Eisen-Todo-List/about"   img={<i className="fa-solid fa-circle-info text-violet-600 text-base font-bold"></i>} btnName={"About"}/>
           
       
         </div>
