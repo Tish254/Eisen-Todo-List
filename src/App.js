@@ -196,46 +196,37 @@ function App() {
 
   return (
     <Router>
-      <div className={`container relative mx-auto px-4 md:px-2 py-2 flex justify-center ${!loggedIn ? "md:justify-center h-[95%] items-center" : "" } md:justify-start gap-10 md:w-[90%] w-[95%] h-[95%] bg-gray-300 rounded 
-        `}>
-          <GoogleApi isLoggedIn={loggedIn} setIsLoggedIn={setLoggedIn} setUserCredentials={setUserCredentials}/>
-
-        {loggedIn &&
-        <AsideNav styler={"hidden md:flex md:flex-col min-w-[30%] bg-white px-3 pt-2 pb-5 rounded"} counted={myObjOfCounts} userCredentials={userCredentials} setIsLoggedIn={setLoggedIn}/>}
-
-        {loggedIn && menuOpen &&
-        <AsideNav styler={"md:hidden flex flex-col items-center w-[98%] top-[4.2rem] h-[86%] z-10 absolute bg-white pt-2 pb-5 px-3 opacity-98 rounded w-full"} counted={myObjOfCounts} userCredentials={userCredentials} setIsLoggedIn={setLoggedIn}/>}
-
-        {loggedIn &&
+      <div className="bg-red-300 flex justify-center items-center w-full h-screen">
+        <div className={`container relative mx-auto px-4 md:px-2 py-2 flex justify-center ${!loggedIn ? "md:justify-center h-[95%] items-center" : "" } md:justify-start gap-10 md:w-[90%] w-[95%] h-[95%] bg-gray-300 rounded
+          `}>
+            <GoogleApi isLoggedIn={loggedIn} setIsLoggedIn={setLoggedIn} setUserCredentials={setUserCredentials}/>
+          {loggedIn &&
+          <AsideNav styler={"hidden md:flex md:flex-col min-w-[30%] bg-white px-3 pt-2 pb-5 rounded"} counted={myObjOfCounts} userCredentials={userCredentials} setIsLoggedIn={setLoggedIn}/>}
+          {loggedIn && menuOpen &&
+          <AsideNav styler={"md:hidden flex flex-col items-center w-[98%] top-[4.2rem] h-[86%] z-10 absolute bg-white pt-2 pb-5 px-3 opacity-98 rounded w-full"} counted={myObjOfCounts} userCredentials={userCredentials} setIsLoggedIn={setLoggedIn}/>}
+          {loggedIn &&
         
-        <Routes>
-            
-            <Route path="/" element={<MyDay todos={filteDataMyday} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked}  completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
-            
-            <Route path="/alltasks" element={<AllTasks todos={filteDataAlltasks} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
-
-            <Route path="/completed" element={<Completed todos={filteDataCompleted} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
-
-            <Route path="/google_calendar" element={<GoogleCalendar todos={filteDataGoogle} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
-
-            
-            <Route path="/do" element={<Do todos={filteDataDo} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
-
-            
-            <Route path="/schedule" element={<Schedule todos={filteDataSchedule} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
-
-            
-            <Route path="/delegate" element={<Delegate todos={filteDataDelegate} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
-
-            
-            <Route path="/delete" element={<Delete todos={filteDataDelete} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
-
-            
-            <Route path="/about" element={<About menuClicked={menuClicked}/>}/>
-
-        </Routes> }
+          <Routes>
+        
+              <Route path="/" element={<MyDay todos={filteDataMyday} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked}  completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
+        
+              <Route path="/alltasks" element={<AllTasks todos={filteDataAlltasks} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
+              <Route path="/completed" element={<Completed todos={filteDataCompleted} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
+              <Route path="/google_calendar" element={<GoogleCalendar todos={filteDataGoogle} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
+        
+              <Route path="/do" element={<Do todos={filteDataDo} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
+        
+              <Route path="/schedule" element={<Schedule todos={filteDataSchedule} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
+        
+              <Route path="/delegate" element={<Delegate todos={filteDataDelegate} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
+        
+              <Route path="/delete" element={<Delete todos={filteDataDelete} addTodo={onAdd} remind={reminderTaskOn} deleteToDo={deleteToDo} menuClicked={menuClicked} completed={completed} counted={[myObjOfCounts, setCountedTasks]} formDetails={[formInputs, setFormInputs]}/>}/>
+        
+              <Route path="/about" element={<About menuClicked={menuClicked}/>}/>
+          </Routes> }
         
         
+        </div>
       </div>
     </Router>
   )
